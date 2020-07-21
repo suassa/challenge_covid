@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22689d12-8ac2-4a3d-bfcd-4c428d8e9213" name="Default Changelist" comment="" />
+    <list default="true" id="22689d12-8ac2-4a3d-bfcd-4c428d8e9213" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Task3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task2.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,11 +56,14 @@
       <recent name="E:\Users\Susanna\Documents\GitHub\challenge_covid" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Task2">
+  <component name="RunManager" selected="Python.Task3">
     <configuration name="Task1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="challenge_covid" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -89,13 +96,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Task3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="challenge_covid" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Task3.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Task3" />
         <item itemvalue="Python.Task2" />
         <item itemvalue="Python.Task2" />
         <item itemvalue="Python.Task2" />
         <item itemvalue="Python.Task2" />
-        <item itemvalue="Python.Task1" />
       </list>
     </recent_temporary>
   </component>
@@ -122,11 +147,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="461" y="165" key="SettingsEditor" timestamp="1595244842338">
+    <state x="461" y="165" key="SettingsEditor" timestamp="1595311811198">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/1920.-227.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595244842338" />
+    <state x="461" y="165" key="SettingsEditor/1920.-227.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595311811198" />
   </component>
 </project>
