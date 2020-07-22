@@ -25,11 +25,12 @@ def get_names(data, num_regioni, num_province):
     for i in range(1, num_regioni + 1):
         if i ==4:
             list.append("Trentino - Alto Adige")
-        for j in range(num_province):
-            if data[j]["codice_regione"] == i:
-                name = data[j]["denominazione_regione"]
-                list.append(name)
-                break
+        else:
+            for j in range(num_province):
+                if data[j]["codice_regione"] == i:
+                    name = data[j]["denominazione_regione"]
+                    list.append(name)
+                    break
     return(list)
 
 def calc_total(data, num_regioni, num_province):

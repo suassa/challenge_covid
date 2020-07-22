@@ -10,13 +10,13 @@
 
 
 {% block body %}
-
-    <p>Scegli una data:</p>
-    <p><input type="date", id="date", name="date", min="2020-02-24", required>
-        <script>
-                document.getElementById('date').max = new Date().toISOString().substring(0, 10);
-        </script>
-    </p>
-    <p><input type="submit", value="Cerca" /></p>
-
+    <form action ="/ricerca" method="get">
+        <p>Scegli una data:</p>
+        <p> <input type="date", id="date", name="date", min="2020-02-24", required />
+            <script>
+                    document.getElementById('date').max = new Date().toISOString().substring(0, 10);
+            </script>
+        </p>
+        <p><input type="submit", value="Cerca" /></p>
+    </form>
 {% endblock %}

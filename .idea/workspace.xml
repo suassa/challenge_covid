@@ -20,8 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22689d12-8ac2-4a3d-bfcd-4c428d8e9213" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task4/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task4/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task4/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Task4/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +52,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/Prova mia" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -107,9 +110,6 @@
       <module name="challenge_covid" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -169,9 +169,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.app (1)" />
-        <item itemvalue="Python.app" />
         <item itemvalue="Python.Task3" />
         <item itemvalue="Python.Task2" />
+        <item itemvalue="Python.app" />
         <item itemvalue="Python.Task2" />
       </list>
     </recent_temporary>
@@ -205,30 +205,38 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595325286451">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595410174928">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/1920.-227.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595325286451" />
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1595363360745">
+    <state x="740" y="275" key="FileChooserDialogImpl/1920.-227.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595410174928" />
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1595427129437">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom/1920.-227.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595363360745" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1595363360745">
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom/1920.-227.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595427129437" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1595427129437">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.center/1920.-227.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595363360745" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1595363360744">
+    <state width="1899" height="282" key="GridCell.Tab.0.center/1920.-227.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595427129437" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1595427129437">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.left/1920.-227.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595363360744" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1595363360745">
+    <state width="1899" height="282" key="GridCell.Tab.0.left/1920.-227.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595427129437" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1595427129437">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.right/1920.-227.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595363360745" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right/1920.-227.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595427129437" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1595361608841">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/1920.-227.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595361608841" />
+    <state x="569" y="209" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1595425284990">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="569" y="209" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.-227.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595425284990" />
+    <state x="552" y="42" width="1378" height="682" key="dock-window-1" timestamp="1595426006345">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="42" width="1378" height="682" key="dock-window-1/1920.-227.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1595426006345" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1595362866517">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
