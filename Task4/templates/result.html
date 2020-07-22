@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+
+    <h1>Risultati della ricerca</h1>
+    I dati sono presentati per regione, in ordine decrescente.
+{% endblock %}
+
+
+{% block body %}
+{{ result }}
+<form action="/save" method = "get">
+    <p><input type="submit" name="save" value="Salva questi dati"></p>
+</form>
+{% endblock %}
