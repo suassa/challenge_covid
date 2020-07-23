@@ -136,7 +136,7 @@ def save():
         sheet.write(row, 1, str(e[1]), text_style)
         row +=1
     wb.save(date_new_format + ".xls")
-    return "File salvato"
+    return render_template("saved.html")
 
 
 if __name__ == "__main__":
