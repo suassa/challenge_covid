@@ -6,6 +6,7 @@ import json
 import numpy
 import xlwt
 
+
 class DataStore():
     date = None
     results = None
@@ -18,40 +19,38 @@ def find_date(json_obj, date):
     return[obj for obj in json_obj if str(date) in obj["data"]]
 
 
-def get_names(data, np):
-    list= []
+def get_names(data):
+    names= []
     nr = datastore.num_regioni
     for i in range(1, nr + 1):
         if i ==4:
-            list.append("Trentino - Alto Adige")
+            names.append("Trentino - Alto Adige")
         else:
-            for j in range(np):
-                if data[j]["codice_regione"] == i:
-                    name = data[j]["denominazione_regione"]
-                    list.append(name)
+            for j, obj in enumerate(data):
+                if obj["codice_regione"] == i:
+                    name = obj["denominazione_regione"]
+                    names.append(name)
                     break
-    return(list)
+    return(names)
 
 
-def calc_total(data, np):
+def calc_total(data):
     nr = datastore.num_regioni
     tot_regioni = numpy.zeros(nr, dtype = int)
-    for j in range(np):
-        i = data[j]["codice_regione"] - 1
+    for obj in data:
+        i = obj["codice_regione"] - 1
         if i > 19: #Eccezione per Trentino diviso nelle due P.A. (cod 4 Trentino, cod 21 e 22 per le due P.A.).
             i = 3
-        tot_provincia = data[j]["totale_casi"]
-        tot_regioni[i] += tot_provincia
+        tot_regioni[i] += obj["totale_casi"]
     return(tot_regioni)
 
 
 def sort_list(names, tot):
-    list = []
-    nr= datastore.num_regioni
-    for i in range(nr):
-        list += ((names[i], tot[i]), )
-    list.sort(key = lambda x: (-x[1], x[0]))
-    return list
+    sorted_list = []
+    for i, name in enumerate(names):
+        sorted_list += [[name, tot[i]], ]
+    sorted_list.sort(key = lambda x: (-x[1], x[0]))
+    return sorted_list
 
 
 def search_and_sort():
@@ -63,12 +62,13 @@ def search_and_sort():
 
     data = find_date(all_data, date_requested)
 
-    num_province = len(data)
-
-    names_regioni = get_names(data, num_province)
-    tot_regioni = calc_total(data, num_province)
+    names_regioni = get_names(data)
+    tot_regioni = calc_total(data)
     list_regioni = sort_list(names_regioni, tot_regioni)
     datastore.results = list_regioni
+
+    for e in list_regioni:
+        e[1]=f'{e[1]:,}'.replace(",", ".")
 
     template = """
             <table>
@@ -80,6 +80,7 @@ def search_and_sort():
                     <th>
                         Totale casi
                     </th>
+                
                 %for row in rows:
                     <tr>
                         %for cell in row:
@@ -111,10 +112,10 @@ def search():
     result = Markup(search_and_sort())
     return render_template("result.html", date = date, result = result)
 
+
 @app.route("/save")
 def save():
     date = datastore.date
-    nr = datastore.num_regioni
     list = datastore.results
 
     wb = xlwt.Workbook()
@@ -130,12 +131,13 @@ def save():
     sheet.write(2, 1, "Totale casi al giorno " + date_new_format, label_style)
 
     row = 3
-    for i in range(nr):
-        sheet.write(row, 0, list[i][0], text_style)
-        sheet.write(row, 1, str(list[i][1]), text_style)
+    for e in list:
+        sheet.write(row, 0, e[0], text_style)
+        sheet.write(row, 1, str(e[1]), text_style)
         row +=1
     wb.save(date_new_format + ".xls")
     return "File salvato"
+
 
 if __name__ == "__main__":
     app.run(debug = True)
