@@ -3,12 +3,72 @@
 
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}">
-        {% block head %}{% endblock %}
+        <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet"> <!--font-->
+        <style>
+            body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                font-family: 'Mulish', sans-serif;
+                color: rgb(52, 63, 56);
+                text-align: center;
+                background-image: url(https://i.imgur.com/hAwxNzO.png);
+                background-color: rgb(177, 246, 203);
+                }
+
+            h1{
+                font-size: 150%;
+                margin: 0;
+                }
+
+            .wrapper {
+                max-width: 550px;
+                margin: 0 auto;
+                background-color: rgba(250, 255, 250, 0.700);
+                border: 2px solid rgb(97, 134, 133);
+                border-radius: 20px;
+                padding: 40px 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                }
+
+            input {
+                margin-top: 20px;
+                text-align: center;
+                font-family: 'Mulish', sans-serif;
+                color: rgb(52, 63, 56);
+               }
+
+            .container-button {
+                margin-top: 20px;
+                text-align: center;
+                }
+
+            .button {
+                padding: 8px 25px;
+                font-weight: bold;
+                background-color: rgba(254, 251, 216, 0.9);
+                border: 2px solid rgb(97, 134, 133);
+                border-radius: 10px;
+                cursor: pointer;
+                outline: none;
+                }
+
+            .button:hover {
+                background-color: rgb(221, 251, 210);
+                }
+
+            {% block style %}{% endblock %}
+
+        </style>
     </head>
 
     <body>
-        {% block body %}{% endblock %}
+        <div class="static">
+            {% block body %}{% endblock %}
+        </div>
     </body>
 
 </html>

@@ -1,22 +1,31 @@
 {% extends "base.html" %}
 
 
-{% block head %}
-
-    <h1>Ricerca per data</h1>
-    Ricerca il numero totale di casi COVID-19, divisi per regione.
-
+{% block style %}
+            .static {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+                }
 {% endblock %}
 
 
 {% block body %}
-    <form action ="/ricerca" method="get">
-        <p>Scegli una data:</p>
-        <p> <input type="date", id="date", name="date", min="2020-02-24", required />
-            <script>
-                    document.getElementById('date').max = new Date().toISOString().substring(0, 10);
-            </script>
-        </p>
-        <p><input type="submit", value="Cerca" /></p>
-    </form>
+    <div class ="wrapper">
+        <h1>Dati COVID-19 in Italia</h1>
+        <p>Ricerca i casi accertati di COVID-19 nelle regioni italiane alla data di interesse.</p>
+
+
+        <form action ="/ricerca" method="get">
+            Scegli una data:
+            <input type="date" id="date" name="date" min="2020-02-24" required>
+                <script>
+                        document.getElementById('date').max = new Date().toISOString().substring(0, 10);
+                </script>
+            <div class="container-button">
+                <input class="button" type="submit" value="Cerca">
+            </div>
+        </form>
+    </div>
 {% endblock %}

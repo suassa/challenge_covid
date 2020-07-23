@@ -1,16 +1,55 @@
 {% extends "base.html" %}
 
 
-{% block head %}
+{% block style %}
+            .static {
+                position: absolute;
+                width: 100%;
+                margin-top: 2%;
+                margin-bottom: 2%;
+                }
 
-    <h1>Risultati della ricerca</h1>
-    I dati sono presentati per regione, in ordine decrescente.
+            table, th, tr, td {
+                border: 1px solid rgb(97, 134, 133);
+                border-collapse: collapse;
+                }
+
+            table {
+                margin-top: 20px;
+                background-color: white;
+                }
+
+            th {
+                text-align: center;
+                background-color: rgb(254, 251, 216);
+                padding: 5px;
+                }
+
+            tr:nth-child(even) {
+                background-color: rgba(177, 246, 203, 0.25);
+                }
+
+            tr:nth-child(odd) {
+                background-color: rgba(220, 246, 177, 0.25);
+                }
+
+            td {
+                text-align: left;
+                padding: 5px 10px 5px 10px;
+                }
+
 {% endblock %}
 
 
 {% block body %}
-{{ result }}
-<form action="/save" method = "get">
-    <p><input type="submit" name="save" value="Salva questi dati"></p>
-</form>
+    <div class = "wrapper">
+        <h1>Dati relativi al {{ date }}</h1>
+
+        {{ result }}
+
+        <form action="/save" method = "get">
+            <input class="button" type="submit" name="save" value="Salva">
+        </form>
+    </div>
+
 {% endblock %}

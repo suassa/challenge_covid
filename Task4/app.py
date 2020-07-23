@@ -54,7 +54,8 @@ def sort_list(names, tot):
     return list
 
 
-def search_and_sort(date_requested):
+def search_and_sort():
+    date_requested = datastore.date
 
     with urllib.request.urlopen("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province.json") as response:
         source = response.read()
@@ -70,17 +71,23 @@ def search_and_sort(date_requested):
     datastore.results = list_regioni
 
     template = """
-            <p>
-                <table>
-                    %for row in rows:
-                        <tr>
-                            %for cell in row:
-                                <td>${cell}</td>
-                            %endfor
-                        </tr>
-                    %endfor
-                </table>
-            </p>
+            <table>
+                <tr>
+                    <th> 
+                        Regione 
+                    </th>
+                    
+                    <th>
+                        Totale casi
+                    </th>
+                %for row in rows:
+                    <tr>
+                        %for cell in row:
+                            <td>${cell}</td>
+                        %endfor
+                    </tr>
+                %endfor
+            </table>
                 """
 
     table = Template(template).render(rows=list_regioni)
@@ -100,8 +107,9 @@ def search():
     date = request.args.get("date")
     date = datetime.strptime(date, "%Y-%m-%d").date()
     datastore.date = date
-    table = Markup(search_and_sort(date))
-    return render_template("result.html", result = table)
+    date = str(date.day)+"/"+str(date.month)+"/"+str(date.year)
+    result = Markup(search_and_sort())
+    return render_template("result.html", date = date, result = result)
 
 @app.route("/save")
 def save():
