@@ -1,4 +1,4 @@
-import urllib.request as request, json, numpy as np, datetime
+import urllib.request, json, numpy, datetime
 
 def get_input():
     date_input = input("Inserisci una data compresa tra il 24/02/2020 e la data corrente nel formato GG/MM/AAAA")
@@ -20,55 +20,53 @@ def get_input():
 def find_date(json_obj, date):
     return[obj for obj in json_obj if str(date) in obj["data"]]
 
-def get_names(data, num_regioni, num_province):
-    list= []
-    for i in range(1, num_regioni + 1):
+def get_names(data, nr):
+    names= []
+    for i in range(1, nr + 1):
         if i ==4:
-            list.append("Trentino - Alto Adige")
+            names.append("Trentino - Alto Adige")
         else:
-            for j in range(num_province):
-                if data[j]["codice_regione"] == i:
-                    name = data[j]["denominazione_regione"]
-                    list.append(name)
+            for j, obj in enumerate(data):
+                if obj["codice_regione"] == i:
+                    name = obj["denominazione_regione"]
+                    names.append(name)
                     break
-    return(list)
+    return(names)
 
-def calc_total(data, num_regioni, num_province):
-    tot_regioni = np.zeros(num_regioni, dtype = int)
-    for j in range(num_province):
-        i = data[j]["codice_regione"] - 1
+def calc_total(data, nr):
+    tot_regioni = numpy.zeros(nr, dtype = int)
+    for obj in data:
+        i = obj["codice_regione"] - 1
         if i > 19: #Eccezione per Trentino diviso nelle due P.A. (cod 4 Trentino, cod 21 e 22 per le due P.A.).
             i = 3
-        tot_provincia = data[j]["totale_casi"]
-        tot_regioni[i] += tot_provincia
+        tot_regioni[i] += obj["totale_casi"]
     return(tot_regioni)
 
-def sort_list(names, tot, num):
-    list = []
-    for i in range(num):
-        list += ((names[i], tot[i]), )
-    list.sort(key = lambda x: (-x[1], x[0]))
-    return list
+def sort_list(names, tot):
+    sorted_list = []
+    for i, name in enumerate(names):
+        sorted_list += [[name, tot[i]], ]
+    sorted_list.sort(key = lambda x: (-x[1], x[0]))
+    return sorted_list
 
 def main():
     date_requested = get_input()
 
-    with request.urlopen("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province.json") as response:
+    with urllib.request.urlopen("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province.json") as response:
         source = response.read()
         all_data = json.loads(source)
 
     data = find_date(all_data, date_requested)
 
-    num_province = len(data)
     num_regioni = 20
 
-    names_regioni = get_names(data, num_regioni, num_province)
-    tot_regioni = calc_total(data, num_regioni, num_province)
-    list_regioni = sort_list(names_regioni, tot_regioni, num_regioni)
+    names_regioni = get_names(data, num_regioni)
+    tot_regioni = calc_total(data, num_regioni)
+    list_regioni = sort_list(names_regioni, tot_regioni)
 
     print("---Numero totale di casi per regione, in ordine decrescente---")
-    for i in range(num_regioni):
-        print("%23s %d" % (list_regioni[i][0] + ": ", list_regioni[i][1]))
+    for row in list_regioni:
+        print("%23s %d" % (row[0] + ": ", row[1]))
 
 if __name__ == "__main__":
     main()

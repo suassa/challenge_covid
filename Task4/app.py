@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, Markup
 from datetime import datetime
 from mako.template import Template
-import urllib
+import urllib.request
 import json
 import numpy
 import xlwt
@@ -11,6 +11,7 @@ class DataStore():
     date = None
     results = None
     num_regioni = 20
+    valid = True
 
 datastore = DataStore()
 
@@ -62,38 +63,43 @@ def search_and_sort():
 
     data = find_date(all_data, date_requested)
 
-    names_regioni = get_names(data)
-    tot_regioni = calc_total(data)
-    list_regioni = sort_list(names_regioni, tot_regioni)
-    datastore.results = list_regioni
+    if len(data)<1:
+        datastore.valid = False
+        return "<h1> I dati richiesti non sono ancora disponibili </h1>"
 
-    for e in list_regioni:
-        e[1]=f'{e[1]:,}'.replace(",", ".")
+    else:
+        names_regioni = get_names(data)
+        tot_regioni = calc_total(data)
+        list_regioni = sort_list(names_regioni, tot_regioni)
+        datastore.results = list_regioni
 
-    template = """
-            <table>
-                <tr>
-                    <th> 
-                        Regione 
-                    </th>
-                    
-                    <th>
-                        Totale casi
-                    </th>
-                
-                %for row in rows:
+        for e in list_regioni:
+            e[1]=f'{e[1]:,}'.replace(",", ".")
+
+        template = """
+                <table>
                     <tr>
-                        %for cell in row:
-                            <td>${cell}</td>
-                        %endfor
-                    </tr>
-                %endfor
-            </table>
-                """
+                        <th> 
+                            Regione 
+                        </th>
+                        
+                        <th>
+                            Totale casi
+                        </th>
+                    
+                    %for row in rows:
+                        <tr>
+                            %for cell in row:
+                                <td>${cell}</td>
+                            %endfor
+                        </tr>
+                    %endfor
+                </table>
+                    """
 
-    table = Template(template).render(rows=list_regioni)
+        table = Template(template).render(rows=list_regioni)
 
-    return table
+        return table
 
 
 app = Flask(__name__)
@@ -110,7 +116,10 @@ def search():
     datastore.date = date
     date = str(date.day)+"/"+str(date.month)+"/"+str(date.year)
     result = Markup(search_and_sort())
-    return render_template("result.html", date = date, result = result)
+    if datastore.valid:
+        return render_template("result.html", date = date, result = result)
+    else:
+        return render_template("outcome.html", content = "I dati richiesti non sono ancora disponibili")
 
 
 @app.route("/save")
@@ -136,7 +145,7 @@ def save():
         sheet.write(row, 1, str(e[1]), text_style)
         row +=1
     wb.save(date_new_format + ".xls")
-    return render_template("saved.html")
+    return render_template("outcome.html", content = "File salvato!")
 
 
 if __name__ == "__main__":
